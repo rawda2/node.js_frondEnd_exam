@@ -1,0 +1,315 @@
+//frondend exam
+
+
+
+// 1-1_ Hoisting is that we can use variables and functions before they are declared in the code.Hoisting is  moving
+// variable and function declarations to the top of their containing scope during execusion of code.
+
+// 1-2_ Suber is used to call the constructor of parent class to access the parent's properties and methods.
+
+// 1-3_ let,const, var are keywords used to declare variables ,The difference(const,let are block scope-can't be re-declared, 
+// let can be updated but const not )
+// var(Functional  scope ,can be updated and redeclared)
+
+// 1-4_ using rest parameter we can represent undefind number of arguments to function as array
+//   _arrow function is anonymous compact short alternative to a regular function,we can't use(this ,argument,super)on this
+//   _different from normal function in(
+// arrow functions cannot be used with the new keyword, cannot be used as constructors, anonymous and it is hard to debug the code.
+// ,cannot be used as generator functions that use the yield keyword to return multiple values over time.)
+
+
+// 2-1_ true
+// 2-2_ false
+// 2-3_ true
+// 2-4_ false
+// 2-5_ false
+// 2-6_ true
+// 2-7_ true
+// 2-8_ false
+
+
+// 3-1: (1)synchronous, blocking, single-threaded language. 
+
+// 3-2: (2)Encapsulation
+
+// 4-1
+
+// Error: The Fails!
+// at new Promise (<anonymous>)
+// The Fails!
+// The Fails!
+
+// 4-2
+// Error getname notdefined
+
+// 4-3
+// 6
+// 8
+
+// 4-4
+// error new color is undefined
+
+// 4-5
+// Bollean
+// string
+
+// 4-6
+// 0
+// 1
+// 4
+// 2
+// 3
+
+// 4-7
+// error i(not defined)
+
+// 4-8
+// hello world
+// 10
+
+// 4-9
+// [59.52, 83.7, 93]
+
+// 4-10
+// ['Batman', 'Bane']
+
+//5-1
+function StringLength(str) {
+
+    if (str === "") {
+      return 0;
+    }
+        return 1 + StringLength(str.slice(1));
+  }
+  
+
+  console.log(StringLength("hello")); 
+  console.log(StringLength(""));
+
+
+ //5-2
+ for (let i = 1; i <= 12; i++) {
+    for (let j = 1; j <= 12; j++) {
+      const result = i * j;
+      console.log(`${i} * ${j} = ${result}`);
+    }
+    console.log("=================");
+  }
+
+//5-3
+
+var array = [1,2,3,4,5];
+console.log(array.filter(function(el, ind){
+  return ind % 2 === 0;
+}));
+
+//5-4
+
+const number = parseInt(prompt("Enter a positive number: "));
+let isPrime = true;
+
+
+if (number === 1) {
+    console.log("1 is neither prime nor composite number.");
+}
+
+
+else if (number > 1) {
+
+  
+    for (let i = 2; i < number; i++) {
+        if (number % i == 0) {
+            isPrime = false;
+            break;
+        }
+    }
+
+    if (isPrime) {
+        console.log(`${number} is a prime number`);
+    } else {
+        console.log(`${number} is a not prime number`);
+    }
+}
+else {
+    console.log("The number is not a prime number.");
+}
+
+//5-6
+let str=prompt("enter the string");
+let count=0;
+for (let i = 0;i< str.length; i++)
+{
+    let str2=str.toLowerCase();
+    if(str2[i]=='a'||str2[i]=='o'||str2[i]=='e'||str2[i]=='u'||str2[i]=='i'){
+        count++;
+    }
+
+}
+console.log(`Number of vowls : ${count}`);
+
+//5-7
+
+
+
+class animal{
+    name;
+    age;
+    set_value(name,age){
+        this.name=name;
+        this.age=age;
+    }
+
+}
+let Dolphin=new animal();
+Dolphin.set_value("dolphine",20)
+console.log(`The name: ${Dolphin.name} The age: ${Dolphin.age} and lives in egypt`);
+
+let Zebra=new animal();
+Zebra.set_value("zebra",20)
+console.log(`The name: ${Zebra.name} The age: ${Zebra.age} and lives in egypt`);
+
+//5-9
+
+function MyObject(name, message) {
+    this.name = name.toString();
+    this.message = message.toString();
+  }
+  MyObject.prototype.getName = function() {
+    return this.name;
+  };
+  MyObject.prototype.getMessage = function() {
+    return this.message;
+  };
+ 
+  
+  //5-10
+
+  
+abstract class Shape {
+    color: string;
+    filled: boolean;
+  
+    constructor(color: string = "red", filled: boolean = true) {
+      this.color = color;
+      this.filled = filled;
+    }
+  
+    getColor(): string {
+      return this.color;
+    }
+  
+    setColor(color: string): void {
+      this.color = color;
+    }
+  
+    isFilled(): boolean {
+      return this.filled;
+    }
+  
+    setFilled(filled: boolean): void {
+      this.filled = filled;
+    }
+  
+    abstract getArea(): number;
+  
+    abstract getPerimeter(): number;
+  
+    toString(): string {
+      return `Shape[color=${this.color}, filled=${this.filled}]`;
+    }
+  }
+  
+  class Circle extends Shape {
+    radius: number;
+  
+    constructor(radius: number = 1.0, color: string = "red", filled: boolean = true) {
+      super(color, filled);
+      this.radius = radius;
+    }
+  
+    getRadius(): number {
+      return this.radius;
+    }
+  
+    setRadius(radius: number): void {
+      this.radius = radius;
+    }
+  
+    getArea(): number {
+      return Math.PI * this.radius * this.radius;
+    }
+  
+    getPerimeter(): number {
+      return 2 * Math.PI * this.radius;
+    }
+  
+    toString(): string {
+      return `Circle[radius=${this.radius}, ${super.toString()}]`;
+    }
+  }
+  
+  class Rectangle extends Shape {
+    width: number;
+    length: number;
+  
+    constructor(width: number = 1.0, length: number = 1.0, color: string = "red", filled: boolean = true) {
+      super(color, filled);
+      this.width = width;
+      this.length = length;
+    }
+  
+    getWidth(): number {
+      return this.width;
+    }
+  
+    getLength(): number {
+      return this.length;
+    }
+  
+    setWidth(width: number): void {
+      this.width = width;
+    }
+  
+    setLength(length: number): void {
+      this.length = length;
+    }
+  
+    getArea(): number {
+      return this.width * this.length;
+    }
+  
+    getPerimeter(): number {
+      return 2 * (this.width + this.length);
+    }
+  
+    toString(): string {
+      return `Rectangle[width=${this.width}, length=${this.length}, ${super.toString()}]`;
+    }
+  }
+  
+  class Square extends Rectangle {
+    constructor(side: number = 1.0, color: string = "red", filled: boolean = true) {
+      super(side, side, color, filled);
+    }
+  
+    getSide(): number {
+      return this.width; // or this.length, since they are equal in a square
+    }
+  
+    setSide(side: number): void {
+      this.width = side;
+      this.length = side;
+    }
+  
+    setWidth(side: number): void {
+      this.setSide(side);
+    }
+  
+    setLength(side: number): void {
+      this.setSide(side);
+    }
+  
+    toString(): string {
+      return `Square[side=${this.width}, ${super.toString()}]`;
+    }
+  }
